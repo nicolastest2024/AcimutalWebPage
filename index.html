@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acimutal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #111827;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background-color: #4ade80;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background-color: #22c55e;
+        }
+
+        /* Estilos página inicio */
+        .home-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 4rem;
+        }
+
+        .menu-card {
+            background: linear-gradient(145deg, rgba(31,41,55,0.9), rgba(17,24,39,0.9));
+            border: 1px solid #374151;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            border-color: #4ade80;
+        }
+
+        .menu-card h2 {
+            color: #4ade80;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .menu-card p {
+            color: #9ca3af;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #4ade80, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 4rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón Volver (oculto en inicio) -->
+    <a href="#" class="back-button" style="display: none;" onclick="showHome(); return false;">← Inicio</a>
+
+    <!-- Página de Inicio -->
+    <section id="inicio" class="section active">
+        <div class="content-container">
+            <h1 class="section-title gradient-text">Acimutal</h1>
+            <div class="home-grid">
+                <div class="menu-card" onclick="showSection('soluciones')">
+                    <h2>Soluciones</h2>
+                    <p>Nuestras soluciones tecnológicas</p>
+                </div>
+                <div class="menu-card" onclick="showSection('industrias')">
+                    <h2>Industrias</h2>
+                    <p>Sectores que atendemos</p>
+                </div>
+                <div class="menu-card" onclick="showSection('socios')">
+                    <h2>Socios</h2>
+                    <p>Alianzas estratégicas</p>
+                </div>
+                <div class="menu-card" onclick="showSection('contacto')">
+                    <h2>Contacto</h2>
+                    <p>Comunícate con nosotros</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Las demás secciones solo mostrarán su contenido específico -->
+    <section id="soluciones" class="section">
+        <div class="content-container">
+            <h1 class="section-title gradient-text">Soluciones</h1>
+            <!-- Contenido específico de soluciones -->
+        </div>
+    </section>
+
+    <section id="industrias" class="section">
+        <div class="content-container">
+            <h1 class="section-title gradient-text">Industrias</h1>
+            <!-- Contenido específico de industrias -->
+        </div>
+    </section>
+
+    <section id="socios" class="section">
+        <div class="content-container">
+            <h1 class="section-title gradient-text">Socios Tecnológicos</h1>
+            <!-- Contenido específico de socios -->
+        </div>
+    </section>
+
+    <section id="contacto" class="section">
+        <div class="content-container">
+            <h1 class="section-title gradient-text">Contacto</h1>
+            <!-- Contenido específico de contacto -->
+        </div>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Mostrar el botón de volver
+            document.querySelector('.back-button').style.display = 'block';
+            
+            // Scroll al inicio
+            window.scrollTo(0, 0);
+        }
+
+        function showHome() {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar la página de inicio
+            document.getElementById('inicio').classList.add('active');
+            
+            // Ocultar el botón de volver
+            document.querySelector('.back-button').style.display = 'none';
+            
+            // Scroll al inicio
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>

@@ -45,39 +45,37 @@
             background-color: #22c55e;
         }
 
-        /* Estilos página inicio */
-        .home-grid {
+        .home-grid, .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            padding-top: 4rem;
+            padding-top: 2rem;
         }
 
-        .menu-card {
+        .card {
             background: linear-gradient(145deg, rgba(31,41,55,0.9), rgba(17,24,39,0.9));
             border: 1px solid #374151;
             border-radius: 0.75rem;
             padding: 2rem;
-            text-align: center;
-            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .menu-card:hover {
+        .card:hover {
             transform: translateY(-5px);
             border-color: #4ade80;
+        }
+
+        .menu-card {
+            text-align: center;
+            cursor: pointer;
         }
 
         .menu-card h2 {
             color: #4ade80;
             font-size: 1.5rem;
             margin-bottom: 1rem;
-        }
-
-        .menu-card p {
-            color: #9ca3af;
         }
 
         .gradient-text {
@@ -97,30 +95,76 @@
             font-size: 2.5rem;
             margin-bottom: 3rem;
         }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #374151;
+            border: 1px solid #4b5563;
+            border-radius: 0.5rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .button {
+            width: 100%;
+            background-color: #4ade80;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-info a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #4ade80;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #4ade80;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            color: #9ca3af;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
-    <!-- Botón Volver (oculto en inicio) -->
     <a href="#" class="back-button" style="display: none;" onclick="showHome(); return false;">← Inicio</a>
 
-    <!-- Página de Inicio -->
+    <!-- Inicio -->
     <section id="inicio" class="section active">
         <div class="content-container">
             <h1 class="section-title gradient-text">Acimutal</h1>
             <div class="home-grid">
-                <div class="menu-card" onclick="showSection('soluciones')">
+                <div class="card menu-card" onclick="showSection('soluciones')">
                     <h2>Soluciones</h2>
                     <p>Nuestras soluciones tecnológicas</p>
                 </div>
-                <div class="menu-card" onclick="showSection('industrias')">
+                <div class="card menu-card" onclick="showSection('industrias')">
                     <h2>Industrias</h2>
                     <p>Sectores que atendemos</p>
                 </div>
-                <div class="menu-card" onclick="showSection('socios')">
+                <div class="card menu-card" onclick="showSection('socios')">
                     <h2>Socios</h2>
                     <p>Alianzas estratégicas</p>
                 </div>
-                <div class="menu-card" onclick="showSection('contacto')">
+                <div class="card menu-card" onclick="showSection('contacto')">
                     <h2>Contacto</h2>
                     <p>Comunícate con nosotros</p>
                 </div>
@@ -128,65 +172,119 @@
         </div>
     </section>
 
-    <!-- Las demás secciones solo mostrarán su contenido específico -->
+    <!-- Soluciones -->
     <section id="soluciones" class="section">
         <div class="content-container">
             <h1 class="section-title gradient-text">Soluciones</h1>
-            <!-- Contenido específico de soluciones -->
+            <div class="content-grid">
+                <div class="card">
+                    <h3 class="card-title">Ciberseguridad</h3>
+                    <p class="card-text">Protección avanzada para infraestructura crítica y datos sensibles.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Analítica de Datos</h3>
+                    <p class="card-text">Insights accionables mediante análisis avanzado de datos.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Infraestructura Digital</h3>
+                    <p class="card-text">Optimización y modernización de infraestructura tecnológica.</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Industrias -->
     <section id="industrias" class="section">
         <div class="content-container">
             <h1 class="section-title gradient-text">Industrias</h1>
-            <!-- Contenido específico de industrias -->
+            <div class="content-grid">
+                <div class="card">
+                    <h3 class="card-title">Energía y Petróleo</h3>
+                    <p class="card-text">Optimización de exploración y producción mediante tecnologías avanzadas.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Infraestructura Gubernamental</h3>
+                    <p class="card-text">Modernización y protección de infraestructuras críticas del sector público.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Sector Corporativo y Salud</h3>
+                    <p class="card-text">Soluciones integrales para empresas y organizaciones de salud.</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Socios -->
     <section id="socios" class="section">
         <div class="content-container">
             <h1 class="section-title gradient-text">Socios Tecnológicos</h1>
-            <!-- Contenido específico de socios -->
+            <div class="content-grid">
+                <div class="card">
+                    <h3 class="card-title">NVIDIA</h3>
+                    <p class="card-text">Computación de Alto Desempeño y AI</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Sophos & Forescout</h3>
+                    <p class="card-text">Ciberseguridad Avanzada</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Stratosphere</h3>
+                    <p class="card-text">Hybrid Data Center</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Qlik</h3>
+                    <p class="card-text">Analytics y Business Intelligence</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Plenumsoft</h3>
+                    <p class="card-text">Automatización del Conocimiento</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- Contacto -->
     <section id="contacto" class="section">
         <div class="content-container">
             <h1 class="section-title gradient-text">Contacto</h1>
-            <!-- Contenido específico de contacto -->
+            <div class="content-grid">
+                <div class="card">
+                    <h3 class="card-title">Nicolás Vega</h3>
+                    <p class="card-text">Director Comercial</p>
+                    <div class="contact-info">
+                        <a href="tel:9933112785">📱 993 311 2785</a>
+                        <a href="mailto:nicolas.vega@acimutal.com.mx">✉️ nicolas.vega@acimutal.com.mx</a>
+                        <a href="https://www.acimutal.com.mx" target="_blank">🌐 www.acimutal.com.mx</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <form>
+                        <input type="text" placeholder="Tu nombre" class="form-input">
+                        <input type="email" placeholder="tu@email.com" class="form-input">
+                        <textarea placeholder="Tu mensaje" class="form-input" style="height: 8rem;"></textarea>
+                        <button type="submit" class="button">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
     <script>
         function showSection(sectionId) {
-            // Ocultar todas las secciones
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
-            
-            // Mostrar la sección seleccionada
             document.getElementById(sectionId).classList.add('active');
-            
-            // Mostrar el botón de volver
             document.querySelector('.back-button').style.display = 'block';
-            
-            // Scroll al inicio
             window.scrollTo(0, 0);
         }
 
         function showHome() {
-            // Ocultar todas las secciones
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
-            
-            // Mostrar la página de inicio
             document.getElementById('inicio').classList.add('active');
-            
-            // Ocultar el botón de volver
             document.querySelector('.back-button').style.display = 'none';
-            
-            // Scroll al inicio
             window.scrollTo(0, 0);
         }
     </script>

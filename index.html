@@ -45,13 +45,48 @@
             background-color: #22c55e;
         }
 
-        .home-grid, .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .content-container {
             max-width: 1200px;
             margin: 0 auto;
             padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #4ade80, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .card {
@@ -78,22 +113,19 @@
             margin-bottom: 1rem;
         }
 
-        .gradient-text {
-            background: linear-gradient(to right, #4ade80, #22c55e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .menu-card p {
+            color: #9ca3af;
         }
 
-        .content-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-top: 4rem;
+        .card-title {
+            color: #4ade80;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+        .card-text {
+            color: #9ca3af;
+            line-height: 1.6;
         }
 
         .form-input {
@@ -106,6 +138,11 @@
             margin-bottom: 1rem;
         }
 
+        .form-input:focus {
+            outline: none;
+            border-color: #4ade80;
+        }
+
         .button {
             width: 100%;
             background-color: #4ade80;
@@ -114,6 +151,11 @@
             border: none;
             border-radius: 0.5rem;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #22c55e;
         }
 
         .contact-info {
@@ -125,22 +167,11 @@
         .contact-info a {
             color: #9ca3af;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         .contact-info a:hover {
             color: #4ade80;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            color: #4ade80;
-            margin-bottom: 1rem;
-        }
-
-        .card-text {
-            color: #9ca3af;
-            margin-bottom: 1rem;
         }
     </style>
 </head>
@@ -150,8 +181,16 @@
     <!-- Inicio -->
     <section id="inicio" class="section active">
         <div class="content-container">
+            <div class="logo-container">
+                <svg width="120" height="120" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="90" stroke="#4ade80" stroke-width="4" fill="none"/>
+                    <ellipse cx="100" cy="100" rx="90" ry="30" stroke="#4ade80" stroke-width="4" fill="none"/>
+                    <line x1="10" y1="100" x2="190" y2="100" stroke="#4ade80" stroke-width="4"/>
+                    <line x1="100" y1="10" x2="100" y2="190" stroke="#4ade80" stroke-width="4"/>
+                </svg>
+            </div>
             <h1 class="section-title gradient-text">Acimutal</h1>
-            <div class="home-grid">
+            <div class="content-grid">
                 <div class="card menu-card" onclick="showSection('soluciones')">
                     <h2>Soluciones</h2>
                     <p>Nuestras soluciones tecnológicas</p>

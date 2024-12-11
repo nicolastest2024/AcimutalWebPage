@@ -12,10 +12,14 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: #111827;
-            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #0a192f;
+            color: white;
             min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 25px 25px, rgba(74, 222, 128, 0.2) 2px, transparent 0),
+                radial-gradient(circle at 75px 75px, rgba(74, 222, 128, 0.2) 2px, transparent 0);
+            background-size: 100px 100px;
         }
 
         .section {
@@ -39,16 +43,14 @@
             text-decoration: none;
             transition: background-color 0.3s ease;
             z-index: 1000;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
         }
 
         .back-button:hover {
             background-color: #22c55e;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
         }
 
         .content-container {
@@ -66,66 +68,116 @@
             display: grid;
             grid-template-columns: repeat(2, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
             width: 100%;
             max-width: 800px;
-        }
-
-        @media (max-width: 768px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
+            margin-top: 2rem;
         }
 
         .section-title {
-            text-align: center;
             font-size: 3rem;
-            margin: 1rem 0;
-        }
-
-        .gradient-text {
-            background: linear-gradient(to right, #4ade80, #22c55e);
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #4ade80, #22d3ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin: 1rem 0;
+            text-align: center;
         }
 
         .card {
             background: linear-gradient(145deg, rgba(31,41,55,0.9), rgba(17,24,39,0.9));
-            border: 1px solid #374151;
-            border-radius: 0.75rem;
+            border-radius: 15px;
             padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card::before,
+        .card::after {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 40%;
+            transition: all 0.3s ease;
+        }
+
+        .card::before {
+            top: -2px;
+            left: -2px;
+            border-top: 2px solid #4ade80;
+            border-left: 2px solid #4ade80;
+            border-radius: 15px 0 0 0;
+        }
+
+        .card::after {
+            bottom: -2px;
+            right: -2px;
+            border-bottom: 2px solid #22d3ee;
+            border-right: 2px solid #22d3ee;
+            border-radius: 0 0 15px 0;
+        }
+
+        .card .tech-line {
+            position: absolute;
+            background: linear-gradient(90deg, #4ade80, transparent);
+            height: 1px;
+            width: 15%;
+            top: 15%;
+            left: -15px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .card .tech-line-2 {
+            position: absolute;
+            background: linear-gradient(270deg, #22d3ee, transparent);
+            height: 1px;
+            width: 15%;
+            bottom: 25%;
+            right: -15px;
+            opacity: 0;
             transition: all 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            border-color: #4ade80;
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.1);
         }
 
-        .menu-card {
-            text-align: center;
-            cursor: pointer;
+        .card:hover::before,
+        .card:hover::after {
+            width: 45%;
+            height: 45%;
         }
 
-        .menu-card h2 {
-            color: #4ade80;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .menu-card p {
-            color: #9ca3af;
+        .card:hover .tech-line,
+        .card:hover .tech-line-2 {
+            width: 25%;
+            opacity: 1;
         }
 
         .card-title {
-            color: #4ade80;
             font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
         }
 
         .card-text {
             color: #9ca3af;
             line-height: 1.6;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
 
         .form-input {
@@ -152,6 +204,9 @@
             border-radius: 0.5rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         .button:hover {
@@ -173,6 +228,15 @@
         .contact-info a:hover {
             color: #4ade80;
         }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -189,23 +253,31 @@
                     <line x1="100" y1="10" x2="100" y2="190" stroke="#4ade80" stroke-width="4"/>
                 </svg>
             </div>
-            <h1 class="section-title gradient-text">Acimutal</h1>
+            <h1 class="section-title">Acimutal</h1>
             <div class="content-grid">
-                <div class="card menu-card" onclick="showSection('soluciones')">
-                    <h2>Soluciones</h2>
-                    <p>Nuestras soluciones tecnológicas</p>
+                <div class="card" onclick="showSection('soluciones')">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
+                    <h2 class="card-title">Soluciones</h2>
+                    <p class="card-text">Nuestras soluciones tecnológicas</p>
                 </div>
-                <div class="card menu-card" onclick="showSection('industrias')">
-                    <h2>Industrias</h2>
-                    <p>Sectores que atendemos</p>
+                <div class="card" onclick="showSection('industrias')">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
+                    <h2 class="card-title">Industrias</h2>
+                    <p class="card-text">Sectores que atendemos</p>
                 </div>
-                <div class="card menu-card" onclick="showSection('socios')">
-                    <h2>Socios</h2>
-                    <p>Alianzas estratégicas</p>
+                <div class="card" onclick="showSection('socios')">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
+                    <h2 class="card-title">Socios</h2>
+                    <p class="card-text">Alianzas estratégicas</p>
                 </div>
-                <div class="card menu-card" onclick="showSection('contacto')">
-                    <h2>Contacto</h2>
-                    <p>Comunícate con nosotros</p>
+                <div class="card" onclick="showSection('contacto')">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
+                    <h2 class="card-title">Contacto</h2>
+                    <p class="card-text">Comunícate con nosotros</p>
                 </div>
             </div>
         </div>
@@ -214,17 +286,23 @@
     <!-- Soluciones -->
     <section id="soluciones" class="section">
         <div class="content-container">
-            <h1 class="section-title gradient-text">Soluciones</h1>
+            <h1 class="section-title">Soluciones</h1>
             <div class="content-grid">
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Ciberseguridad</h3>
                     <p class="card-text">Protección avanzada para infraestructura crítica y datos sensibles.</p>
                 </div>
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Analítica de Datos</h3>
                     <p class="card-text">Insights accionables mediante análisis avanzado de datos.</p>
                 </div>
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Infraestructura Digital</h3>
                     <p class="card-text">Optimización y modernización de infraestructura tecnológica.</p>
                 </div>
@@ -235,17 +313,23 @@
     <!-- Industrias -->
     <section id="industrias" class="section">
         <div class="content-container">
-            <h1 class="section-title gradient-text">Industrias</h1>
+            <h1 class="section-title">Industrias</h1>
             <div class="content-grid">
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Energía y Petróleo</h3>
                     <p class="card-text">Optimización de exploración y producción mediante tecnologías avanzadas.</p>
                 </div>
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Infraestructura Gubernamental</h3>
                     <p class="card-text">Modernización y protección de infraestructuras críticas del sector público.</p>
                 </div>
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Sector Corporativo y Salud</h3>
                     <p class="card-text">Soluciones integrales para empresas y organizaciones de salud.</p>
                 </div>
@@ -256,25 +340,35 @@
     <!-- Socios -->
     <section id="socios" class="section">
         <div class="content-container">
-            <h1 class="section-title gradient-text">Socios Tecnológicos</h1>
+            <h1 class="section-title">Socios Tecnológicos</h1>
             <div class="content-grid">
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">NVIDIA</h3>
                     <p class="card-text">Computación de Alto Desempeño y AI</p>
                 </div>
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Sophos & Forescout</h3>
                     <p class="card-text">Ciberseguridad Avanzada</p>
                 </div>
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Stratosphere</h3>
                     <p class="card-text">Hybrid Data Center</p>
                 </div>
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Qlik</h3>
                     <p class="card-text">Analytics y Business Intelligence</p>
                 </div>
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Plenumsoft</h3>
                     <p class="card-text">Automatización del Conocimiento</p>
                 </div>
@@ -285,9 +379,11 @@
     <!-- Contacto -->
     <section id="contacto" class="section">
         <div class="content-container">
-            <h1 class="section-title gradient-text">Contacto</h1>
+            <h1 class="section-title">Contacto</h1>
             <div class="content-grid">
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <h3 class="card-title">Nicolás Vega</h3>
                     <p class="card-text">Director Comercial</p>
                     <div class="contact-info">
@@ -297,6 +393,8 @@
                     </div>
                 </div>
                 <div class="card">
+                    <div class="tech-line"></div>
+                    <div class="tech-line-2"></div>
                     <form>
                         <input type="text" placeholder="Tu nombre" class="form-input">
                         <input type="email" placeholder="tu@email.com" class="form-input">

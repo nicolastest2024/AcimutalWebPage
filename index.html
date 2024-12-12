@@ -14,7 +14,7 @@
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: #0a192f;
-            color: white;
+            color: #ffffff;
             min-height: 100vh;
             background-image: 
                 radial-gradient(circle at 25px 25px, rgba(74, 222, 128, 0.2) 2px, transparent 0),
@@ -22,76 +22,143 @@
             background-size: 100px 100px;
         }
 
+        /* Headers y navegación */
+        .header {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contenedores principales */
         .section {
             display: none;
             min-height: 100vh;
             padding: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .section.active {
             display: block;
         }
 
-        .back-button {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            background-color: #4ade80;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            z-index: 1000;
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-
-        .back-button:hover {
-            background-color: #22c55e;
-        }
-
         .content-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding-top: 2rem;
+            padding-top: 4rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-            justify-content: center;
         }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(300px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 800px;
-            margin-top: 2rem;
-        }
-
+        /* Títulos y textos */
         .section-title {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             background: linear-gradient(to right, #4ade80, #22d3ee);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 1rem 0;
+            margin: 2rem 0;
             text-align: center;
         }
 
+        .header .section-title {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        /* Banner principal */
+        .intro-banner {
+            max-width: 800px;
+            margin: 2rem auto 3rem;
+            padding: 3rem;
+            background: linear-gradient(165deg, rgba(31,41,55,0.95), rgba(17,24,39,0.8));
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 222, 128, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .banner-text {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Grids */
+        .main-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Tarjetas y efectos */
         .card {
             background: linear-gradient(145deg, rgba(31,41,55,0.9), rgba(17,24,39,0.9));
             border-radius: 15px;
             padding: 2rem;
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .industry-card {
             cursor: pointer;
+        }
+
+        .industry-image-container {
+            height: 250px;
+            margin: -2rem -2rem 2rem -2rem;
+            background: linear-gradient(165deg, rgba(31,41,55,0.95), rgba(17,24,39,0.8));
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .industry-image-container svg {
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s ease;
+        }
+
+        /* Efectos hover */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         .card::before,
@@ -119,120 +186,38 @@
             border-radius: 0 0 15px 0;
         }
 
-        .card .tech-line {
-            position: absolute;
-            background: linear-gradient(90deg, #4ade80, transparent);
-            height: 1px;
-            width: 15%;
-            top: 15%;
-            left: -15px;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .card .tech-line-2 {
-            position: absolute;
-            background: linear-gradient(270deg, #22d3ee, transparent);
-            height: 1px;
-            width: 15%;
-            bottom: 25%;
-            right: -15px;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.1);
-        }
-
         .card:hover::before,
         .card:hover::after {
             width: 45%;
             height: 45%;
         }
 
-        .card:hover .tech-line,
-        .card:hover .tech-line-2 {
-            width: 25%;
+        /* Elementos de contacto */
+        .contact-bar {
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto 0;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-bar:hover {
             opacity: 1;
         }
 
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            background: linear-gradient(to right, #4ade80, #22d3ee);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .card-text {
-            color: #9ca3af;
-            line-height: 1.6;
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #374151;
-            border: 1px solid #4b5563;
-            border-radius: 0.5rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #4ade80;
-        }
-
-        .button {
-            width: 100%;
-            background-color: #4ade80;
-            color: white;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        .button:hover {
-            background-color: #22c55e;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .contact-info a {
-            color: #9ca3af;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            color: #4ade80;
+        /* Responsivo */
+        @media (max-width: 1024px) {
+            .industries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .content-grid {
+            .industries-grid,
+            .main-grid {
                 grid-template-columns: 1fr;
             }
+
             .section-title {
                 font-size: 2rem;
             }
@@ -240,11 +225,9 @@
     </style>
 </head>
 <body>
-    <a href="#" class="back-button" style="display: none;" onclick="showHome(); return false;">← Inicio</a>
-
     <!-- Inicio -->
     <section id="inicio" class="section active">
-        <div class="content-container">
+        <div onclick="showHome()" class="header">
             <div class="logo-container">
                 <svg width="120" height="120" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="100" cy="100" r="90" stroke="#4ade80" stroke-width="4" fill="none"/>
@@ -254,28 +237,39 @@
                 </svg>
             </div>
             <h1 class="section-title">Acimutal</h1>
-            <div class="content-grid">
+        </div>
+        <div class="content-container">
+            <!-- Banner -->
+            <div class="intro-banner">
+                <div class="banner-content">
+                    <p class="banner-text">
+                        Somos una empresa líder en Transformación Digital especializada en Seguridad e Inteligencia de Datos.
+                    </p>
+                    <p class="banner-text">
+                        Ayudamos a las organizaciones a adaptarse al futuro tecnológico mediante soluciones avanzadas que integran Ciberseguridad, Analítica Avanzada, Data Lakes, Inteligencia Artificial y optimización en los procesos de diseño, ingeniería y gestión.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Grid principal -->
+            <div class="main-grid">
                 <div class="card" onclick="showSection('soluciones')">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
                     <h2 class="card-title">Soluciones</h2>
                     <p class="card-text">Nuestras soluciones tecnológicas</p>
                 </div>
                 <div class="card" onclick="showSection('industrias')">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
                     <h2 class="card-title">Industrias</h2>
                     <p class="card-text">Sectores que atendemos</p>
                 </div>
                 <div class="card" onclick="showSection('socios')">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h2 class="card-title">Socios</h2>
+                    <h2 class="card-title">Nuestros Socios</h2>
                     <p class="card-text">Alianzas estratégicas</p>
                 </div>
+            </div>
+
+            <!-- Barra de contacto -->
+            <div class="contact-bar">
                 <div class="card" onclick="showSection('contacto')">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
                     <h2 class="card-title">Contacto</h2>
                     <p class="card-text">Comunícate con nosotros</p>
                 </div>
@@ -283,124 +277,56 @@
         </div>
     </section>
 
-    <!-- Soluciones -->
-    <section id="soluciones" class="section">
-        <div class="content-container">
-            <h1 class="section-title">Soluciones</h1>
-            <div class="content-grid">
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Ciberseguridad</h3>
-                    <p class="card-text">Protección avanzada para infraestructura crítica y datos sensibles.</p>
-                </div>
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Analítica de Datos</h3>
-                    <p class="card-text">Insights accionables mediante análisis avanzado de datos.</p>
-                </div>
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Infraestructura Digital</h3>
-                    <p class="card-text">Optimización y modernización de infraestructura tecnológica.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Industrias -->
+    <!-- Sección de Industrias -->
     <section id="industrias" class="section">
-        <div class="content-container">
-            <h1 class="section-title">Industrias</h1>
-            <div class="content-grid">
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Energía y Petróleo</h3>
-                    <p class="card-text">Optimización de exploración y producción mediante tecnologías avanzadas.</p>
-                </div>
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Infraestructura Gubernamental</h3>
-                    <p class="card-text">Modernización y protección de infraestructuras críticas del sector público.</p>
-                </div>
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Sector Corporativo y Salud</h3>
-                    <p class="card-text">Soluciones integrales para empresas y organizaciones de salud.</p>
-                </div>
+        <div onclick="showHome()" class="header">
+            <div class="logo-container">
+                <svg width="40" height="40" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="90" stroke="#4ade80" stroke-width="4" fill="none"/>
+                    <ellipse cx="100" cy="100" rx="90" ry="30" stroke="#4ade80" stroke-width="4" fill="none"/>
+                    <line x1="10" y1="100" x2="190" y2="100" stroke="#4ade80" stroke-width="4"/>
+                    <line x1="100" y1="10" x2="100" y2="190" stroke="#4ade80" stroke-width="4"/>
+                </svg>
             </div>
+            <h1 class="section-title">Acimutal</h1>
         </div>
-    </section>
-
-    <!-- Socios -->
-    <section id="socios" class="section">
         <div class="content-container">
-            <h1 class="section-title">Socios Tecnológicos</h1>
-            <div class="content-grid">
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">NVIDIA</h3>
-                    <p class="card-text">Computación de Alto Desempeño y AI</p>
-                </div>
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Sophos & Forescout</h3>
-                    <p class="card-text">Ciberseguridad Avanzada</p>
-                </div>
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Stratosphere</h3>
-                    <p class="card-text">Hybrid Data Center</p>
-                </div>
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Qlik</h3>
-                    <p class="card-text">Analytics y Business Intelligence</p>
-                </div>
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Plenumsoft</h3>
-                    <p class="card-text">Automatización del Conocimiento</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto" class="section">
-        <div class="content-container">
-            <h1 class="section-title">Contacto</h1>
-            <div class="content-grid">
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <h3 class="card-title">Nicolás Vega</h3>
-                    <p class="card-text">Director Comercial</p>
-                    <div class="contact-info">
-                        <a href="tel:9933112785">📱 993 311 2785</a>
-                        <a href="mailto:nicolas.vega@acimutal.com.mx">✉️ nicolas.vega@acimutal.com.mx</a>
-                        <a href="https://www.acimutal.com.mx" target="_blank">🌐 www.acimutal.com.mx</a>
+            <h2 class="section-title">Industrias</h2>
+            <div class="industries-grid">
+                <!-- Energía y Petróleo -->
+                <div class="industry-card">
+                    <div class="industry-image-container">
+                        <!-- SVG de energía y petróleo aquí -->
+                        [El SVG que proporcionaste anteriormente]
                     </div>
+                    <h3 class="industry-title">Energía y Petróleo</h3>
+                    <p class="industry-description">
+                        Optimización de exploración y producción mediante tecnologías avanzadas.
+                    </p>
                 </div>
-                <div class="card">
-                    <div class="tech-line"></div>
-                    <div class="tech-line-2"></div>
-                    <form>
-                        <input type="text" placeholder="Tu nombre" class="form-input">
-                        <input type="email" placeholder="tu@email.com" class="form-input">
-                        <textarea placeholder="Tu mensaje" class="form-input" style="height: 8rem;"></textarea>
-                        <button type="submit" class="button">Enviar Mensaje</button>
-                    </form>
+
+                <!-- Infraestructura Gubernamental -->
+                <div class="industry-card">
+                    <div class="industry-image-container">
+                        <!-- SVG de infraestructura gubernamental aquí -->
+                        [El SVG que proporcionaste anteriormente]
+                    </div>
+                    <h3 class="industry-title">Infraestructura Gubernamental</h3>
+                    <p class="industry-description">
+                        Modernización y protección de infraestructuras críticas del sector público.
+                    </p>
+                </div>
+
+                <!-- Sector Corporativo y Salud -->
+                <div class="industry-card">
+                    <div class="industry-image-container">
+                        <!-- SVG de sector corporativo y salud aquí -->
+                        [El SVG que proporcionaste anteriormente]
+                    </div>
+                    <h3 class="industry-title">Sector Corporativo y Salud</h3>
+                    <p class="industry-description">
+                        Soluciones integrales para empresas y organizaciones de salud.
+                    </p>
                 </div>
             </div>
         </div>
@@ -412,7 +338,6 @@
                 section.classList.remove('active');
             });
             document.getElementById(sectionId).classList.add('active');
-            document.querySelector('.back-button').style.display = 'block';
             window.scrollTo(0, 0);
         }
 
@@ -421,7 +346,6 @@
                 section.classList.remove('active');
             });
             document.getElementById('inicio').classList.add('active');
-            document.querySelector('.back-button').style.display = 'none';
             window.scrollTo(0, 0);
         }
     </script>

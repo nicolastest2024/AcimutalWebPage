@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acimutal</title>
+    <title>Acimutal - Transformación Digital Inteligente</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,7 @@
             background-size: 100px 100px;
         }
 
-        /* Headers y navegación */
+        /* Header y Navegación */
         .header {
             position: absolute;
             top: 2rem;
@@ -123,7 +123,7 @@
             padding: 0 2rem;
         }
 
-        /* Tarjetas y efectos */
+        /* Tarjetas y contenedores de imágenes */
         .card {
             background: linear-gradient(145deg, rgba(31,41,55,0.9), rgba(17,24,39,0.9));
             border-radius: 15px;
@@ -147,6 +147,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            border-radius: 15px 15px 0 0;
         }
 
         .industry-image-container svg {
@@ -155,7 +156,7 @@
             transition: all 0.5s ease;
         }
 
-        /* Efectos hover */
+        /* Efectos de hover y animaciones */
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -192,7 +193,29 @@
             height: 45%;
         }
 
-        /* Elementos de contacto */
+        .industry-image-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba(74, 222, 128, 0.1) 50%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .industry-card:hover .industry-image-container::before {
+            opacity: 1;
+        }
+
+        .industry-card:hover .industry-image-container svg {
+            transform: scale(1.05);
+        }
+
+        /* Contacto */
         .contact-bar {
             width: 100%;
             max-width: 600px;
@@ -205,10 +228,14 @@
             opacity: 1;
         }
 
-        /* Responsivo */
+        /* Responsive */
         @media (max-width: 1024px) {
             .industries-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .industry-image-container {
+                height: 200px;
             }
         }
 
@@ -220,6 +247,10 @@
 
             .section-title {
                 font-size: 2rem;
+            }
+
+            .industry-image-container {
+                height: 180px;
             }
         }
     </style>
@@ -296,8 +327,25 @@
                 <!-- Energía y Petróleo -->
                 <div class="industry-card">
                     <div class="industry-image-container">
-                        <!-- SVG de energía y petróleo aquí -->
-                        [El SVG que proporcionaste anteriormente]
+                        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Torres y bombas -->
+                            <g fill="#1f2937">
+                                <path d="M100 50 L150 25 L200 50 L175 300 L125 300 Z"/>
+                                <path d="M250 50 L300 25 L350 50 L325 300 L275 300 Z"/>
+                            </g>
+                            <!-- Tuberías -->
+                            <g stroke="#4ade80" stroke-width="4" fill="none">
+                                <path d="M0 350 C100 350 300 350 400 350"/>
+                                <path d="M50 320 C150 320 250 320 350 320"/>
+                            </g>
+                            <!-- Bombas de extracción -->
+                            <g stroke="#22d3ee" stroke-width="3" fill="none">
+                                <path d="M50 200 L100 150 L150 200"/>
+                                <path d="M250 200 L300 150 L350 200"/>
+                            </g>
+                            <!-- Gota de petróleo -->
+                            <path fill="#4ade80" d="M200 100 L220 80 A20 20 0 1 1 180 80 Z"/>
+                        </svg>
                     </div>
                     <h3 class="industry-title">Energía y Petróleo</h3>
                     <p class="industry-description">
@@ -308,8 +356,29 @@
                 <!-- Infraestructura Gubernamental -->
                 <div class="industry-card">
                     <div class="industry-image-container">
-                        <!-- SVG de infraestructura gubernamental aquí -->
-                        [El SVG que proporcionaste anteriormente]
+                        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Edificio principal -->
+                            <g fill="#1f2937">
+                                <path d="M100 100 L200 50 L300 100 L300 300 L100 300 Z"/>
+                            </g>
+                            <!-- Elementos de conexión -->
+                            <g stroke="#4ade80" stroke-width="2" fill="none">
+                                <circle cx="150" cy="150" r="20"/>
+                                <circle cx="250" cy="150" r="20"/>
+                                <path d="M150 100 L150 50 M130 70 L170 70"/>
+                                <path d="M250 100 L250 50 M230 70 L270 70"/>
+                            </g>
+                            <!-- Red de conexiones -->
+                            <g stroke="#22d3ee" stroke-width="2" stroke-dasharray="5,5">
+                                <path d="M150 150 L250 150"/>
+                                <path d="M200 100 L200 200"/>
+                            </g>
+                            <!-- Iconos de seguridad -->
+                            <g fill="#4ade80">
+                                <circle cx="150" cy="250" r="15"/>
+                                <circle cx="250" cy="250" r="15"/>
+                            </g>
+                        </svg>
                     </div>
                     <h3 class="industry-title">Infraestructura Gubernamental</h3>
                     <p class="industry-description">
@@ -320,8 +389,33 @@
                 <!-- Sector Corporativo y Salud -->
                 <div class="industry-card">
                     <div class="industry-image-container">
-                        <!-- SVG de sector corporativo y salud aquí -->
-                        [El SVG que proporcionaste anteriormente]
+                        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Símbolo médico central -->
+                            <g fill="#1f2937">
+                                <circle cx="200" cy="200" r="60"/>
+                            </g>
+                            <g fill="#4ade80">
+                                <rect x="180" y="160" width="40" height="80"/>
+                                <rect x="160" y="180" width="80" height="40"/>
+                            </g>
+                            <!-- Círculos de conexión -->
+                            <g stroke="#22d3ee" stroke-width="2" fill="none">
+                                <circle cx="100" cy="150" r="20"/>
+                                <circle cx="300" cy="150" r="20"/>
+                                <circle cx="100" cy="250" r="20"/>
+                                <circle cx="300" cy="250" r="20"/>
+                            </g>
+                            <!-- Líneas de conexión -->
+                            <g stroke="#4ade80" stroke-width="2" stroke-dasharray="5,5">
+                                <path d="M120 150 L160 150"/>
+                                <path d="M240 150 L280 150"/>
+                                <path d="M120 250 L160 250"/>
+                                <path d="M240 250 L280 250"/>
+                            </g>
+                            <!-- Pulso cardíaco -->
+                            <path d="M50 325 L75 325 L100 275 L125 375 L150 325 L175 325" 
+                                  stroke="#22d3ee" stroke-width="3" fill="none"/>
+                        </svg>
                     </div>
                     <h3 class="industry-title">Sector Corporativo y Salud</h3>
                     <p class="industry-description">
@@ -351,3 +445,4 @@
     </script>
 </body>
 </html>
+    
